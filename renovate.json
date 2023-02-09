@@ -1,0 +1,26 @@
+{
+  "extends": [
+    ":ignoreModulesAndTests",
+    ":prConcurrentLimit10",
+    "group:monorepos",
+    "group:recommended",
+    "workarounds:all"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["major", "minor"],
+      "extends": ["schedule:weekends"]
+    }
+  ],
+  "rangeStrategy": "update-lockfile",
+  "updatePinnedDependencies": false,
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+}
